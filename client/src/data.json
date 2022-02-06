@@ -1,0 +1,35 @@
+[
+  {
+        "id":"id1",
+        "title":"jeans",
+        "imagesUrl":"/images/product-A1.jpg",
+        "desc":"These are jeans for men",
+        "prise":50,
+        "sizes":["M","L","XL"]
+    },
+  {
+        "id":"id2",
+        "title":"Short jeans",
+        "imagesUrl":"/images/product-A2.jpg",
+        "desc":"These are jeans for women",
+        "prise":80,
+        "sizes":["S","M","L",]
+    },
+  {
+        "id":"id3",
+        "title":"sneaker",
+        "imagesUrl":"/images/product-A3.jpg",
+        "desc":"These are sneakers ",
+        "prise":40,
+        "sizes":["38","40","42"]
+    },
+  {
+        "id":"id4",
+        "title":"Men shirt",
+        "imagesUrl":"/images/product-A4.jpg",
+        "desc":"These are men's shirts ",
+        "prise":30,
+        "sizes":["M","L","XL"]
+    },
+
+]
