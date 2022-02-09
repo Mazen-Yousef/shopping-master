@@ -13,7 +13,7 @@
         "imagesUrl":"/images/product-A2.jpg",
         "desc":"These are jeans for women",
         "prise":80,
-        "sizes":["S","M","L",]
+        "sizes":["S","M","L"]
     },
   {
         "id":"id3",
@@ -30,6 +30,6 @@
         "desc":"These are men's shirts ",
         "prise":30,
         "sizes":["M","L","XL"]
-    },
+    }
 
 ]

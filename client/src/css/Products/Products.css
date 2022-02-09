@@ -1,0 +1,27 @@
+.products {
+  display: flex;
+  justify-content: space-between;
+}
+.products .productItem {
+  width: 24%;
+}
+.products .productItem img {
+  width: 100%;
+  padding: 1px;
+}
+.products .productInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 5px;
+  font-size: small;
+}
+.products button {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: tomato;
+  color: mintcream;
+  padding: 4px;
+  border-radius: 2px;
+}
