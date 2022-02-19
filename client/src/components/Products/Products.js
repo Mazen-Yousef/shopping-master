@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../../css/Products/Products.css" ;
+import ProductModal from './ProductModal';
 
- function products(props) {
+ function Products(props) {
+   const [product, setProduct] = useState("");
+   const openModal = (hadi) => {
+    setProduct(hadi)
+   };
+   const closeModal = ()=>{
+    setProduct(false)
+
+   }
   return ( <div className="products"> 
   
-             { props.products.map( product => (
+             { props.products.map( hadi => (
 
-               <div key={product.id} className='productItem'>
-                   <img src={product.imagesUrl} alt = {product.title} />
+               <div key={hadi.id} className='productItem'>
+                 <a href='#' onClick={()=>openModal(hadi)}>
+                 <img src={hadi.imagesUrl} alt = {hadi.title} />
+                 </a>
                    <div className='productInfo'>
-                       <p>{product.title} </p>
-                        <span>{product.prise}</span>
+                       <p>{hadi.title} </p>
+                        <span>${hadi.prise}</span>
                    </div>
                    <button> Add To Cart</button>
                  
@@ -20,7 +31,10 @@ import "../../css/Products/Products.css" ;
 
              )} 
 
+            <ProductModal product={product} closeModal={closeModal}  />
+
+
              
            </div>);
 }
-export default products
+export default Products
