@@ -7,13 +7,13 @@ import data from "./data.json";
 
 
 function App() {
-  const [products , setProducts] = useState(data);
+  //const [products , setProducts] = useState(data);
 
     return (
     <div className="layout">
         <Header/>
         <div className="wrapper">
-          <Products products={products} />
+          <Products products={data} />
           <div className="filter">filter</div>
         </div>
         <Footer />
