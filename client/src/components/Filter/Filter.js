@@ -6,7 +6,7 @@ function Filter(props) {
   return (
     <div className="filter">
         <h2 className='filter-title'> Filter</h2>
-        <div> Number Of Products 4 </div>
+        <div> Number Of Products {props.productsNumber} </div>
         <div className='filter-filterSize'>
             <span>
             Size
