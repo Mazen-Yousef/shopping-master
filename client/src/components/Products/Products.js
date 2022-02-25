@@ -23,7 +23,7 @@ import ProductModal from './ProductModal';
                        <p>{hadi.title} </p>
                         <span>${hadi.prise}</span>
                    </div>
-                   <button> Add To Cart</button>
+                   <button onClick={() => props.addToCart(hadi)}> Add To Cart</button>
                  
                </div>
 
