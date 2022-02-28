@@ -25,11 +25,20 @@
   align-items: center;
   flex: 1;
 }
-.cart_item button {
-  width: 80px;
+
+.cartFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+button {
+  display: inline-block;
   border: 0;
   background: #2eb086;
   color: mintcream;
   padding: 4px;
   border-radius: 5px;
+  cursor: pointer;
 }
