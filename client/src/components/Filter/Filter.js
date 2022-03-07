@@ -1,11 +1,11 @@
 import React from 'react'
 import "../../css/Filter/Filter.css"
- 
+import Fade from 'react-reveal/Fade';
 
 function Filter(props) {
   return (
     <div className="filter">
-        <h2 className='filter-title'> Filter</h2>
+        <Fade left  cascade text ><h2 className='filter-title'> Filter</h2></Fade>
         <div> Number Of Products {props.productsNumber} </div>
         <div className='filter-filterSize'>
             <span>
