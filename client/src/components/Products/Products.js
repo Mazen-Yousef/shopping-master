@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import "../../css/Products/Products.css" ;
 import ProductModal from './ProductModal';
+import Zoom from 'react-reveal/Zoom'
+import Bounce from 'react-reveal/Bounce';
+import Slide from 'react-reveal/Slide';
+
 
  function Products(props) {
    const [product, setProduct] = useState("");
@@ -11,7 +15,10 @@ import ProductModal from './ProductModal';
     setProduct(false)
 
    }
-  return ( <div className="products"> 
+  return ( 
+      
+
+            <div className="products"> 
   
              { props.products.map( hadi => (
 
@@ -35,6 +42,15 @@ import ProductModal from './ProductModal';
 
 
              
-           </div>);
+           </div>
+          
+           
+           
+       
+           );
+
+
+
+
 }
 export default Products

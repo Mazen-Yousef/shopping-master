@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 import "../../css/Cart/Cart.css"
 import Checkout from '../Checkout/Checkout'
+import Fade from 'react-reveal/Fade';
 
 
 function Cart(props) {
@@ -29,7 +30,7 @@ function Cart(props) {
 
   return (
     <div className='cart_wrapper'>
-        <div className='cart_empty'>{props.cartItems.length === 0 ? <h4>Cart Empty</h4> : <h5> 
+        <div className='cart_empty'>{props.cartItems.length === 0 ? <Fade top cascade text><h4>Cart Empty</h4></Fade>  : <h5> 
             There are {props.cartItems.length} products in cart</h5>}</div>
         <div className='cart_items'>
             {props.cartItems.map(i => (
