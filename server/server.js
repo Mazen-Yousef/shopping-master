@@ -22,8 +22,8 @@ mongoose.connect(connectionString,{
 
 
 
-app.listen(3007, () => {
-    console.log('running on port 3007')
+app.listen(4000, () => {
+    console.log('running on port 4000')
 })
 
 
