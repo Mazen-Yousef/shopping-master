@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import "../../css/Products/Products.css" ;
 import ProductModal from './ProductModal';
-import Zoom from 'react-reveal/Zoom'
-import Bounce from 'react-reveal/Bounce';
-import Slide from 'react-reveal/Slide';
+import{connect} from 'react-redux';
+import { fetchProducts } from '../../redux/actions/products';
+
+
 
 
  function Products(props) {
@@ -14,13 +15,20 @@ import Slide from 'react-reveal/Slide';
    const closeModal = ()=>{
     setProduct(false)
 
-   }
+   };
+
+   useEffect(()=>{
+     props.fetchProducts()
+   },[]);
+
+
+
   return ( 
       
 
             <div className="products"> 
   
-             { props.products.map( hadi => (
+             {props.products && props.products.length ? props.products.map( hadi => (
 
                <div key={hadi.id} className='productItem'>
                  <a href='#' onClick={()=>openModal(hadi)}>
@@ -36,7 +44,7 @@ import Slide from 'react-reveal/Slide';
 
              )
 
-             )} 
+             ) : "LOADING >>>"} 
 
             <ProductModal product={product} closeModal={closeModal}  />
 
@@ -53,4 +61,8 @@ import Slide from 'react-reveal/Slide';
 
 
 }
-export default Products
+export default connect((state)=>{
+  return {
+    products : state.products.products
+  }
+}, {fetchProducts} )(Products) 

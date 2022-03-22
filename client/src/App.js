@@ -5,8 +5,9 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import data from "./data.json";
-import{Provider}from'react-redux';
-import store from "./store/store";
+import {Provider}from 'react-redux';
+import store from "./redux/store/store";
+
 
 
 
@@ -25,10 +26,10 @@ function App() {
     setSize(e.target.value);
 
   let productsClone = [...data];
-  let newProducts = productsClone.filter(p => p.sizes.indexOf(e.target.value) != -1 );
+  let newProducts = productsClone.filter(p => p.sizes.indexOf(e.target.value) !== -1 );
 
 
-    if(e.target.value == "ALL"){
+    if(e.target.value === "ALL"){
       setProducts(data);
     } else {
       
@@ -44,9 +45,9 @@ function App() {
       let productsClone = [...data];
      let newProducts = productsClone.sort(
         (a,b) => {
-          if(e.target.value == "Lower"){
+          if(e.target.value === "Lower"){
             return (a.prise-b.prise)
-          } else if (e.target.value == "Highest"){
+          } else if (e.target.value === "Highest"){
             return (b.prise-a.prise)
           } else {
            return (a.id < b.id ? 1 : -1) 
@@ -55,7 +56,7 @@ function App() {
         }
       );
 
-      if(e.target.value == "ALL"){
+      if(e.target.value === "ALL"){
         setProducts(data);
       } else {
         
@@ -68,7 +69,7 @@ function App() {
         const cartItemsClone =[ ...cartItems];
         let isProductExisting = false;
         cartItemsClone.forEach( p => {
-          if(p.id == product.id){
+          if(p.id === product.id){
             p.qty++;
             isProductExisting = true ;
           }})
@@ -97,21 +98,23 @@ function App() {
   
 
     return (
-   <Provider store={store}>
-         <div className="layout">
-        <Header/>
-        <main>
-        <div className="wrapper">
-          <Products products={products} addToCart={addToCart} />
-          <Filter filterBySize={filterBySize} size={size} filterByOrder={filterByOrder} order={order} productsNumber={products.length}  />
-         
-        </div>
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-        </main>
-        <Footer />
+         <Provider store={store}>
+            <div className="layout">
+                <Header/>
+                <main>
+                <div className="wrapper">
+                  <Products products={products} addToCart={addToCart} />
+                  <Filter filterBySize={filterBySize} size={size} filterByOrder={filterByOrder} order={order} productsNumber={products.length}  />
+                
+                </div>
+                  <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+                </main>
+                <Footer />
 
-    </div>
-   </Provider>
+            </div>
+         </Provider>
+ 
+  
   );
 }
 
