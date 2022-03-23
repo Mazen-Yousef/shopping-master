@@ -4,7 +4,7 @@ import reducer from './reducers';
 
 
 const initState ={};
-const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOS__ || compose ;
+const enhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose ;
 const store = createStore(reducer,initState,enhancer(applyMiddleware(reduxThunk)));
 
 export default store 

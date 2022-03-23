@@ -63,6 +63,6 @@ import { fetchProducts } from '../../redux/actions/products';
 }
 export default connect((state)=>{
   return {
-    products : state.products.products
+    products : state.products.productsByFilter
   }
 }, {fetchProducts} )(Products) 
