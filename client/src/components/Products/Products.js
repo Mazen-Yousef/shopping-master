@@ -3,6 +3,7 @@ import "../../css/Products/Products.css" ;
 import ProductModal from './ProductModal';
 import{connect} from 'react-redux';
 import { fetchProducts } from '../../redux/actions/products';
+import { addToCart } from '../../redux/actions/ac_cart';
 
 
 
@@ -65,4 +66,4 @@ export default connect((state)=>{
   return {
     products : state.products.productsByFilter
   }
-}, {fetchProducts} )(Products) 
+}, {fetchProducts,addToCart}  )(Products) 

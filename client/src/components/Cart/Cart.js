@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import "../../css/Cart/Cart.css"
 import Checkout from '../Checkout/Checkout'
 import Fade from 'react-reveal/Fade';
+import {connect} from 'react-redux';
+import { removeCart } from '../../redux/actions/ac_cart';
 
 
 function Cart(props) {
@@ -42,7 +44,7 @@ function Cart(props) {
                                     <p>Qty:{i.qty}</p>
                                     <p>Prise:{i.prise}$</p>
                                 </div>
-                                <button onClick={()=>{props.removeFromCart(i)}}>
+                                <button onClick={()=>{props.removeCart(i)}}>
                                     remove
                                 </button>
                             </div>
@@ -72,4 +74,9 @@ function Cart(props) {
   )
 }
 
-export default Cart
+export default connect((state)=>{
+    return{
+        cartItems:state.cart.cartItems
+    }
+
+}, {removeCart} )(Cart) 
