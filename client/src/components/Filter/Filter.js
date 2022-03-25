@@ -33,7 +33,6 @@ function Filter(props) {
                 Order
             </span>
             <select value={props.sort} className='filter-orderSelect' onChange={(e)=> props.filteredSort(props.productsByFilter,e.target.value)} >
-                <option value="ALL">ALL</option>
                 <option value="Latest">Latest</option>
                 <option value="Lower">Lower</option>
                 <option value="Highest">Highest</option>
