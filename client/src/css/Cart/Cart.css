@@ -42,3 +42,37 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.order_info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.order_info .order_success {
+  background-color: #2eb086;
+  color: mintcream;
+  padding: 10px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+.order_info .close-icon {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+.order_info table {
+  border: solid #524a4e;
+}
+.order_info tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid #524a4e;
+}
+.order_info tr:last-of-type {
+  border-bottom: 0;
+}
+.order_info tr td {
+  padding: 10px;
+}
