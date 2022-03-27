@@ -5,9 +5,9 @@ import Zoom from 'react-reveal/Zoom';
 
 function Footer (){
     return(
-       <Zoom left cascade text><footer>
-          {staticWords.foterTitle}
-        </footer></Zoom> 
+       <footer><Zoom left cascade text>
+          {staticWords.foterTitle}</Zoom> 
+        </footer>
     )
 }
 
