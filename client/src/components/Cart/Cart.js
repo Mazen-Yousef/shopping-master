@@ -6,6 +6,7 @@ import Fade from 'react-reveal/Fade';
 import {connect} from 'react-redux';
 import { removeCart } from '../../redux/actions/ac_cart';
 import Modal from 'react-modal';
+import OrderModal from './OrderModal';
 
 
 
@@ -44,39 +45,7 @@ function Cart(props) {
         <div className='cart_empty'>{props.cartItems.length === 0 ? <Fade top cascade text><h4>Cart Empty</h4></Fade>  : <h5> 
             There are {props.cartItems.length} products in cart</h5>}</div>
         {/*Modal*/}
-        <Modal isOpen={order} onRequestClose={closeModal}>
-            <div className='order_info'>
-            <span className='close-icon' onClick={closeModal}> &times;</span>
-                <p className='order_success'>Order Done</p>
-                <table>
-                    <tr>
-                        <td> Name:</td>
-                        <td>{order.name}</td>
-                    </tr>
-                    <tr>
-                        <td> Email:</td>
-                        <td>{order.email}</td>
-                    </tr>
-                    <tr>
-                        <td> Total:</td>
-                        <td>{props.cartItems.reduce((a,b)=>{
-                            return a + b.prise
-                        },0)}</td>
-                    </tr>
-                    <tr>
-                        <td> selected Items:</td>
-                        <td>{props.cartItems.map((p)=>(
-                                <div className='cart_data'>
-                                    <p>Number of this Product {p.qty} </p>
-                                    <p>Title of this Product {p.title} </p>
-                                </div>
-                        ))}</td>
-                    </tr>
-                </table>
-
-            </div>
-
-        </Modal>
+        <OrderModal cartItems={props.cartItems} closeModal={closeModal} order={order} ></OrderModal>
 
         <div className='cart_items'>
             {props.cartItems.map(i => (
