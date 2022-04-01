@@ -4,6 +4,7 @@ import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
 import {connect} from 'react-redux';
 import { filteredSize, filteredSort } from '../../redux/actions/products';
+import { words } from '../../words';
 
 
 function Filter(props) {
@@ -11,10 +12,10 @@ function Filter(props) {
       <Flip right>
           {props.productsByFilter &&  <div className="filter">
                    <Fade left  cascade text ><h2 className='filter-title'> Filter</h2></Fade>
-        <div> Number Of Products {props.productsByFilter.length}</div>
+        <div> {words.nOfProuduct} {props.productsByFilter.length}</div>
         <div className='filter-filterSize'>
             <span>
-            Size
+            {words.size}
             </span>
             <select value={props.size} className='filter-sizeSelect'  onChange={(e)=> props.filteredSize(props.products,e.target.value)} >
                 <option value="ALL">ALL</option>
@@ -30,7 +31,7 @@ function Filter(props) {
 
         <div className='filter-filterOrder'>
             <span>
-                Order
+                {words.order}
             </span>
             <select value={props.sort} className='filter-orderSelect' onChange={(e)=> props.filteredSort(props.productsByFilter,e.target.value)} >
                 <option value="Latest">Latest</option>

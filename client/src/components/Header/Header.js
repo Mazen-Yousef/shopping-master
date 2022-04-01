@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/Header/Header.css";
-import { staticWords } from "../../staticWords";
 import Bounce from 'react-reveal/Bounce';
+import { words } from "../../words";
 
 
 function Header (){
@@ -9,7 +9,7 @@ function Header (){
     return(
         <Bounce left cascade text>
             <header>
-            {staticWords.headerTitle}
+            {words.headerTitle}
             </header>
         </Bounce>
     )
