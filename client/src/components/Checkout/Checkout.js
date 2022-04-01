@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../css/Checkout/Checkout.css'
+import { words } from '../../words';
 import Input from '../Input/Input';
 
  function Checkout(props) {
@@ -8,13 +9,13 @@ import Input from '../Input/Input';
             {props.showForm &&         <div className='checkoutForm'>
             <form onSubmit={props.submitOrder}>
                 <Input
-                    label = "Name"
+                    label = {words.name}
                     type = "text"
                     name = "name"
                     onChange ={props.handleChange} />
 
                 <Input
-                    label = "Email"
+                    label = {words.email}
                     type = "email"
                     name = "email"
                     onChange ={props.handleChange} />
@@ -22,7 +23,7 @@ import Input from '../Input/Input';
 
 
 
-                <button type="submit"> CHECKOUT </button>
+                <button type="submit"> {words.checkout} </button>
 
             </form>
             <span className='close-icon' onClick={() => props.setShowForm(false)}> &times;</span>

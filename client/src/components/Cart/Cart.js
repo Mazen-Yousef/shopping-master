@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-
 import "../../css/Cart/Cart.css"
 import Checkout from '../Checkout/Checkout'
 import Fade from 'react-reveal/Fade';
 import {connect} from 'react-redux';
 import { removeCart } from '../../redux/actions/ac_cart';
-import Modal from 'react-modal';
 import OrderModal from './OrderModal';
-
+import { clearOrder, createOrder } from '../../redux/actions/ac_order';
+import { words } from '../../words';
 
 
 function Cart(props) {
-    const [order,setOrder]= useState(false);
+
+    const [showForm,setShowForm] = useState(false);
 
     const submitOrder = (e)=>{
         e.preventDefault()
@@ -19,11 +19,14 @@ function Cart(props) {
             name:value.name,
             email:value.email
         }
-        setOrder(order)
+       props.createOrder(order);
 
     }
     const closeModal = ()=>{
-        setOrder(false)
+        props.clearOrder();
+        setShowForm(false);
+        
+        
     }
 
     const [value ,setValue] = useState("");
@@ -35,17 +38,13 @@ function Cart(props) {
     }
 
 
-    const [showForm,setShowForm] = useState(false);
-
-    
-
-
   return (
     <div className='cart_wrapper'>
-        <div className='cart_empty'>{props.cartItems.length === 0 ? <Fade top cascade text><h4>Cart Empty</h4></Fade>  : <h5> 
-            There are {props.cartItems.length} products in cart</h5>}</div>
+        <div className='cart_empty'>{props.cartItems.length === 0 ? <Fade top cascade text>
+            <h4>{words.cartEmpty}</h4></Fade>  : <h5> 
+             {words.productsNumber} : {props.cartItems.length} </h5>}</div>
         {/*Modal*/}
-        <OrderModal cartItems={props.cartItems} closeModal={closeModal} order={order} ></OrderModal>
+        <OrderModal cartItems={props.cartItems} closeModal={closeModal} order={props.order} ></OrderModal>
 
         <div className='cart_items'>
             {props.cartItems.map(i => (
@@ -53,12 +52,12 @@ function Cart(props) {
                             <img src={i.imagesUrl} alt={i.title} />
                             <div className='cart_info'>
                                 <div>
-                                    <p>Title:{i.title}</p>
-                                    <p>Qty:{i.qty}</p>
-                                    <p>Prise:{i.prise}$</p>
+                                    <p>{words.cartTitle}:{i.title}</p>
+                                    <p>{words.cartQty}:{i.qty}</p>
+                                    <p>{words.cartPrise}:{i.prise}$</p>
                                 </div>
                                 <button onClick={()=>{props.removeCart(i)}}>
-                                    remove
+                                    {words.removeItem}
                                 </button>
                             </div>
                         </div>
@@ -70,13 +69,13 @@ function Cart(props) {
         {
             props.cartItems.length !== 0 &&
             <div className='cartFooter'>
-            <div className='totalPrise'> Total Prise : { props.cartItems.reduce((acc,i)=>{
+            <div className='totalPrise'> {words.cartTotalPrise} : { props.cartItems.reduce((acc,i)=>{
                 return (acc + i.prise * i.qty)
 
             },0)
             } $ </div>
-            <button onClick={() => {setShowForm(true)}}> select Products </button>
-        </div>
+            <button onClick={() => {setShowForm(true)}}> {words.selectProducts} </button>
+            </div>
         }
         {/*checkout form */}
         <Checkout submitOrder={submitOrder} showForm={showForm} setShowForm={setShowForm} handleChange={handleChange}  />
@@ -89,7 +88,8 @@ function Cart(props) {
 
 export default connect((state)=>{
     return{
+        order:state.order.order,
         cartItems:state.cart.cartItems
     }
 
-}, {removeCart} )(Cart) 
+}, {removeCart,createOrder,clearOrder}  )(Cart) 
