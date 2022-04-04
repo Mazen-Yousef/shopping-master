@@ -37,3 +37,25 @@ main {
 .filter {
   width: 30%;
 }
+
+
+.nav ul {
+  display: flex;
+  background-color: #f1f1f1;
+  list-style: none;
+  padding: 10px 35px;
+}
+
+.nav ul li a {
+  display: block;
+  background-color:#ababab;
+  color: #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  text-decoration: none;
+}
+
+.nav ul li a.active {
+
+  background-color:#524a4e;
+}
